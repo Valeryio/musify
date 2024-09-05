@@ -1,0 +1,413 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer base {
+    /* clears the ‘X’ from Chrome */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+  img
+  {
+    max-width: 100%;
+  }
+
+  *
+  {
+    
+    scrollbar-color: black #656565;
+    scrollbar-width: thin;
+  }
+
+}
+
+
+@layer components {
+
+  /*------------------------------------*\
+            track card component
+  \*------------------------------------*/
+  .track-card
+  {
+    width: 10rem;
+    height: 14rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    background-color: #151313;
+    border-radius: 1rem;
+  }
+  .track-card__title
+  {
+    font-weight: 600;
+  }
+  .track-card__desc
+  {
+    font-size: 1rem;
+  }
+
+
+
+
+
+    /*------------------------------------*\
+            mix card component
+  \*------------------------------------*/
+  .mix-card
+  {
+    width: 16rem;
+    height: 20rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    background-color: #151313;
+    border-radius: 1rem;
+  }
+
+  .mix-card__img-container
+  {
+    position: relative;
+  }
+  .mix-card__img-container
+  {
+    display: flex;
+    justify-content: center;
+  }
+  .mix-card__mix-label
+  {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+  .mix-card__colorband
+  {
+  }
+  .mix-card__title, .mix-card__mix-label
+  {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .mix-card__desc
+  {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+
+
+
+
+  /*------------------------------------*\
+            Search bar component
+  \*------------------------------------*/
+  .search_bar
+  {
+    outline: none;
+    width: 32rem;
+    height: 3rem;
+    padding: 1rem;
+    color: white;
+    border-radius: 4rem;
+    background: #7F7F7F;
+  }
+
+  .search_bar::placeholder
+  {
+    color: #a6a6a6;
+    font-weight: 400;
+  }
+
+
+
+
+
+  /*------------------------------------*\
+            breadcrum component
+  \*------------------------------------*/
+  .breadcrum
+  {
+    display: flex;
+    gap: 1.5rem;
+    font-size: .8rem;
+    align-items: center;
+  }
+  .breadcrum-content
+  {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .back-option
+  {
+    padding: 1rem;
+    background: #2d2d2d;
+    border-radius: .5rem;
+  }
+  .back-option:hover
+  {
+    background: #707070;
+  }
+  .next-option
+  {
+  }
+  .breadcrum-current
+  {
+    color: white;
+    font-weight: 600;
+  }
+
+
+
+
+  /*------------------------------------*\
+            Sidebar component
+  \*------------------------------------*/
+  .sidebar
+  {
+    width: 16rem;
+    color: #949494;
+    padding: 1.5rem 0;
+    border-radius: .5rem;
+    background-color: #212121;
+  }
+  .sidebar__group
+  {
+    margin: 1rem 0;
+  }
+  .sidebar__group-title
+  {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.4rem 2rem;
+  }
+  .sidebar__item
+  {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  .sidebar__item:hover
+  {
+    position: relative;
+    background: linear-gradient(to right, rgb(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  }
+  .sidebar__item-active
+  {
+    position: relative;
+    background: linear-gradient(to right, rgb(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  }
+  .sidebar__item-active::after
+  {
+    top: 0;
+    right: 0;
+    content: "";
+    width: .5rem;
+    height: 100%;
+    position: absolute;
+    background-color: #1DB954;
+    border-radius: 4px 0 0 4px;
+  }
+
+
+
+
+  /*------------------------------------*\
+          artist-card-bio component
+  \*------------------------------------*/
+  .artist-card-bio
+  {
+    min-width: 45rem;
+    height: 20rem;
+    padding: 2rem 2rem;
+    position: relative;
+    border-radius: .5rem;
+    background: #151313;
+  }
+  .artist-card__certification
+  {
+    display: flex;
+    gap: 1rem;
+  }
+  .artist-card__artist-name
+  {
+    font-size: 4rem;
+    font-weight: 800;
+  }
+  .artist-card__statistics
+  {
+    display: flex;
+    gap: 1rem;
+  }
+  .artist-card__img
+  {
+    bottom: 0;
+    right: 2rem;
+    position: absolute;
+  }
+
+
+
+
+  /*------------------------------------*\
+            artist-song component
+  \*------------------------------------*/
+  .artist-song
+  {
+    display: flex;
+    padding: 1rem 1rem;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+  }
+  .artist-song__number
+  {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .artist-song__listeners
+  {
+    font-weight: 100;
+  }
+  .artist-song__content
+  {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+
+
+
+
+  /*------------------------------------*\
+      album-presentation bar component
+  \*------------------------------------*/
+  .album-presentation
+  {
+    display: flex;
+    gap: 1rem;
+    height: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 0 0 1rem 0;
+    border-radius: .5rem;
+    overflow: hidden;
+    background-color: #212121;
+  }
+  .album-presentation__content
+  {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+  }
+  .album-presentation__title
+  {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .album-presentation__artist
+  {
+    font-size: .8rem;
+    color: #656565;
+    font-weight: 600;
+  }
+  .album-repsentation__discover-btn
+  {
+    font-size: .8rem;
+    font-weight: 700;
+    padding: .5rem 2rem;
+    border-radius: 2rem;
+    background-color: #1DB954;
+  }
+
+
+
+
+  /*------------------------------------*\
+              tours component
+  \*------------------------------------*/
+  .tours
+  {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .tours-header
+  {
+    display: flex;
+    padding: 0 1rem;
+    justify-content: space-between;
+  }
+  .tours-header__title
+  {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .tours-header__show-all-btn
+  {
+    font-size: .8rem;
+    color: #656565;
+    font-weight: 600;
+  }
+  .tours-header__show-all-btn:hover
+  {
+    color:#1DB954;
+  }
+  .tours__item
+  {
+    display: flex;
+    gap: 1rem;
+    padding: .5rem;
+    background-color: rgb(37, 37, 37);
+    border-radius: .5rem;
+    border: 1px solid #151313;
+    box-shadow: 2px 2px 2px #151313;
+  }
+  .tours__date-box
+  {
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 600;
+    border-radius: .5rem;
+    background-color: rgb(54, 54, 54);
+  }
+  .tours__month
+  {
+    font-size: 1.2rem;
+  }
+  .tours__localisation
+  {
+    font-weight: 600;
+  }
+  .tours__artist-name
+  {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #ffffff98;
+  }
+  .tours__desc
+  {
+    color: #656565;
+    font-size: .8rem;
+    font-weight: 600;
+  }
+
+}
