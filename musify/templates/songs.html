@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+Album songs
+{% endblock %}
+
+{% block content %}
+
+{# album #}
+
+    <section class="artist-section items-start grid grid-cols-45x65">
+        <div class="artist-section__main mx-4 px-4 items-start">
+            <div class="artist-section__artist-description artist-card-bio">
+
+
+                <div class="artist-card-bio__breadcrum mb-10" >
+                    <div class="breadcrum">
+                        <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt=""class="back-option" >
+
+                        <div class="breadcrum-content">
+                            <a href="#" class="breadcrum-precedent">Home</a>
+                            <img src=" {{ url_for('static', filename='assets/images/icons/forward.svg') }}" alt="" class="next-option">
+                            <a href="#" class="breadcrum-current"> {{ album["artists"][0]["name"] }} </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-card__certification">
+                    <img src="{{ url_for('static', filename='assets/images/icons/verified_artist.svg') }}" alt="" class="artist-card__certification-img">
+                    <p class="artist-card__certification-label">
+                        Verified Artist
+                    </p>
+                </div>
+
+                <h2 class="artist-card__artist-name">{{ album["artists"][0]["name"] }}</h2>
+
+                <div class="artist-card__statistics">
+                    <img src=" {{ url_for('static', filename='assets/images/icons/earphone.svg') }} " alt="earphone icon">
+                    <p class="artist-card__listeners"> <span class="artist-card__listeners-number __album-name">{{ album["name"] }}</span> </p>
+                </div>
+
+                <img src="{{ album['images'][0]['url'] }}" alt="" class="artist-card__img">
+
+            </div>
+
+
+            <div
+            class="artist-song__container gap-4 h-12 overflow-auto grid my-4 py-4">
+
+                {% for song in album["tracks"]["items"] %}
+                <div class="artist-song">
+                    <div class="artist-song__content">
+                        <p class="artist-song__number">{{ song["track_number"] }}</p>
+                        <img src="{{ album['images'][2]['url'] }}" alt="An artist song">
+                        <p class="artist-song__name">
+                            {{ song["name"] }}
+                        </p>
+                    </div>
+
+                    {# song["preview_url"] #}
+                    {% for song_artist in song["artists"] %}
+                        <p class="artist-song__listeners"> {{ song_artist["name"] }} </p>
+                    {% endfor %}
+                    <img src=" {{ url_for('static', filename='assets/images/icons/dots.svg') }}" alt="Three dots" class="artist-song__more-options">
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="artist_records rounded p-2 flex-col gap-2 bg-pr-black-600">
+            <div class="album-presentation">
+                <img src="{{ album['images'][0]['url'] }}" alt="" class="artist_records__b-album-cover">
+
+                <div class="album-presentation__content"> 
+                    <div class="album-presentation__infos">
+                        <h3 class="album-presentation__title">Dietro Casa</h3>
+                        <p class="album-presentation__artist">Ed Sheeran</p>
+                    </div>
+
+                    <button class="album-repsentation__discover-btn" >Discover</button>
+                </div>
+            </div>
+
+            <div class="artist-tours tours">
+                <div class="tours-header">
+                    <h3 class="tours-header__title">On tour</h3>
+                    <button class="tours-header__show-all-btn">Show all</button>
+                </div>
+
+                <div class="tours__container">
+                    <div class="tours__item">
+                        <div class="tours__date-box">
+                            <span class="tours__day">6</span>
+                            <span class="tours__month">Sep</span>
+                        </div>
+                        <div class="tours__informations">
+                            <h4 class="tours__localisation">Turin</h4>
+                            <p class="tours__artist-name">Ed sheeran</p>
+                            <p class="tours__desc">
+                                <span class="tours__date-hours">Sat 8:30 PM</span>
+                                <span class="tours__place">Piazza San Carlo</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %} 

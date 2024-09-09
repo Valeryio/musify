@@ -680,6 +680,7 @@ img
   display: flex;
   gap: 1.5rem;
   font-size: .8rem;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -687,6 +688,7 @@ img
   {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -987,6 +989,10 @@ img
 
 .mb-4{
   margin-bottom: 1rem;
+}
+
+.block{
+  display: block;
 }
 
 .flex{

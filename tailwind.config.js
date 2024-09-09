@@ -1,8 +1,10 @@
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./views/pages/*.html",
-    "./views/js/*.js"
+    "./views/js/*.js",
+    "./musify/templates/*.html"
   ],
   theme: {
     extend: {
@@ -31,9 +33,19 @@ module.exports = {
         "45x65": "minmax(45rem, 80rem) auto"
       },
       padding: {
+        '1r': "1rem",
+        '2r': "2rem",
+        '4r': "4rem",
         '8': '8rem',
         '10': '10rem',
         '12': '12rem',
+      },
+      margin: {
+        '2r': '2rem',
+        '4r': '4rem',
+        '8r': '8rem',
+        '10r': '10rem',
+        '12r': '12rem',
       },
       spacing: {
         '12': '20rem',

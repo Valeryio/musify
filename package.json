@@ -4,6 +4,6 @@
   },
 
   "scripts": {
-    "tailwind_build" : "npx tailwindcss -i ./views/styles/input.css -o ./views/styles/output.css  --watch"
+    "tailwind_build" : "npx tailwindcss -i ./musify/static/styles/input.css -o ./musify/static/styles/output.css  --watch"
   }
 }

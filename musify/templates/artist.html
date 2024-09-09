@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Musify
+{% endblock %}
+
+{% block content %}
+
+{{ search_data }}
+
+{# artist #}
+{# albums #}
+
+<section class="artist-section  border-violet flex">
+    <div class="artist-section__sidebar sidebar">
+
+        <div class="sidebar__breadcrum flex items-center justify-center">
+            <div class="breadcrum">
+                <img src="./../static/assets/images/icons/Back.svg" alt=""class="back-option" >
+
+                <div class="breadcrum-content">
+                    <a href="{{ url_for('index') }}" class="breadcrum-precedent">Home</a>
+                    <img src="./../static/assets/images/icons/forward.svg" alt="" class="next-option">
+                    <a href="#" class="breadcrum-current"> {{ artist["items"][0]["name"] }} </a>
+                </div>
+            </div>
+        </div>
+
+
+            {% for album in albums["items"] %}
+        <form method="post" action="" class="sidebar__group" >
+            {{ album_form.hidden_tag() }}
+            <button class="sidebar__item sidebar__item-active">
+                <img src="./../static/assets/images/icons/discover.svg" alt="Discover button" 
+                class="sitebar__item-img">
+                <p class="sidebar__item-content">{{ album["name"] }}</p>
+            </button>
+                {{ album_form.album_id(class="hidden", value=album['id']) }}
+        </form>
+            {% endfor %}
+            <!-- <div class="sidebar__item">
+                <img src="./../static/assets/images/icons/radio.svg" alt="Discover button" 
+                class="sitebar__item-img">
+                <p class="sidebar__item-content">Radio</p>
+            </div>
+            <div class="sidebar__item">
+                <img src="./../static/assets/images/icons/podcasts.svg" alt="Discover button" 
+                class="sitebar__item-img">
+                <p class="sidebar__item-content">Podcasts</p>
+            </div> -->
+
+        <!-- <div class="sidebar__group">
+            <h3 class="sidebar__group-title">
+                PLAYLIST
+            </h3>
+            <div class="sidebar__item">
+                <img src="./../static/assets/images/icons/recently_added.svg" alt=" button" class="sitebar__item-img">
+                <p class="sidebar__item-content">Recently added</p>
+            </div>
+            <div class="sidebar__item">
+                <img src="./../static/assets/images/icons/favorite_songs.svg" alt=" button" class="sitebar__item-img">
+                <p class="sidebar__item-content">Favorite songs</p>
+            </div>
+            <div class="sidebar__item">
+                <img src="./../static/assets/images/icons/local_files.svg" alt=" button" class="sitebar__item-img">
+                <p class="sidebar__item-content">Local files</p>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="artist-section__main px-4">
+        <div 
+        class="artist-section__artist-description artist-card-bio">
+
+            <div class="artist-card__certification">
+                <img src="./../static/assets/images/icons/verified_artist.svg" alt="" class="artist-card__certification-img">
+                <p class="artist-card__certification-label">
+                    Verified Artist
+                </p>
+            </div>
+
+            <h2 class="artist-card__artist-name">{{ artist["items"][0]["name"] }}</h2>
+
+            <div class="artist-card__statistics">
+                <img src="./../static/assets/images/icons/earphone.svg" alt="earphone icon">
+                <p class="artist-card__listeners"> <span class="artist-card__listeners-number"> {{ artist["items"][0]["followers"]["total"] }} </span> Followers on Spotify</p>
+            </div>
+
+            <button class="artist-card__cta">Discover on Spotify</button>
+
+            <img src="{{ artist['items'][0]['images'][1]['url'] }}" alt="" class="artist-card__img">
+
+        </div>
+
+        <section class="artist-section__popular-release top-album-month border-white border py-4 my-4">
+            <div 
+            class="top-album-month__header flex justify-between px-5 mb-4">
+                <h3 
+                class="top-album-month-title text-xl font-semibold">
+                    Top tracks of {{ artist["items"][0]["name"] }}
+                </h3>
+
+                <button
+                class="top-album-month-options font-medium text-pr-gray-200">
+                    SEE ALL
+                </button>
+            </div>
+
+            <div class="top-album-month__card-container px-5 flex gap-10 flex-wrap">
+    
+    
+                {% for track in top_tracks %}
+                    <div class="top-album-month__card track-card">
+                        <img src="{{ track['album']['images'][1]['url'] }}" alt="track img"
+                        class="track-card__img">
+        
+                        <div class="track-card__content">
+                            <h3
+                            class="track-card__title">
+                            {{ track["album"]["name"] }}
+                        </h3>
+                        <p
+                            class="track-card__desc">
+                            {{ artist["items"][0]["name"] }}
+                        </p>
+                        </div>
+                    </div>
+                {% endfor %}
+    
+            </div>
+    
+        </section>
+
+    </div>
+
+    <!-- <div class="artist_records rounded p-2 flex-col gap-2 bg-pr-black-600">
+        <div class="album-presentation">
+            <img src="./../static/assets/images/profile_img/album-cover.jpg" alt="" class="artist_records__b-album-cover">
+
+            <div class="album-presentation__content"> 
+                <div class="album-presentation__infos">
+                    <h3 class="album-presentation__title">Dietro Casa</h3>
+                    <p class="album-presentation__artist">Ed Sheeran</p>
+                </div>
+
+                <button class="album-repsentation__discover-btn" >Discover</button>
+            </div>
+        </div>
+
+        <div class="artist-tours tours">
+            <div class="tours-header">
+                <h3 class="tours-header__title">On tour</h3>
+                <button class="tours-header__show-all-btn">Show all</button>
+            </div>
+
+            <div class="tours__container">
+                <div class="tours__item">
+                    <div class="tours__date-box">
+                        <span class="tours__day">6</span>
+                        <span class="tours__month">Sep</span>
+                    </div>
+                    <div class="tours__informations">
+                        <h4 class="tours__localisation">Turin</h4>
+                        <p class="tours__artist-name">Ed sheeran</p>
+                        <p class="tours__desc">
+                            <span class="tours__date-hours">Sat 8:30 PM</span>
+                            <span class="tours__place">Piazza San Carlo</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</section>
+
+
+{% endblock %}

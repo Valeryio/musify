@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href=" {{ url_for('static', filename='/styles/output.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body class="bg-maroon p-4 text-white font-raleway">
+
+        {{ headers }}
+        <header
+        class="header border border-white flex justify-between items-center mb-4">
+            <img src=" {{ url_for('static', filename='assets/images/logo/white_musify-logo.svg') }}" alt="Logo of musify"
+            class="header__logo">
+
+            <form action="" class="header__search_bar-form" method="post">
+                {{ form.hidden_tag() }}
+                {% if search_data %}
+                    {{ form.search_field(class="search_bar", placeholder="Search music, track, albums...", value=search_data) }}
+                {% else %}
+                    {{ form.search_field(class="search_bar", placeholder="Search for an artist...") }}
+                {% endif %}
+                {{ form.submit(class="hidden") }}
+            </form>
+
+            <div class="header__cta">
+                <button class="py-2 px-5 bg-pr-green-800 rounded-4xl " >Share</button>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+
+    </body>
+</html>

@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Musify
+{% endblock %}
+
+{% block content %}
+
+    {% if albums %}
+
+    <section class="top-artist-month border-white border py-4 my-4">
+        <div 
+        class="top-artist-month__header flex justify-between px-5 mb-4">
+            <h3 
+            class="top-artist-month-title text-xl font-semibold">
+                Your top tracks this month
+            </h3>
+
+            <button
+            class="top-artist-month-options font-medium text-pr-gray-200">
+                SEE ALL
+            </button>
+        </div>
+
+            <div
+            class="top-artist-month__container px-5 border border-violet-600 justify-center items-center flex flex-wrap gap-10">
+
+                {% for album in albums %}
+                <div class="top-artist-month-card track-card">
+                    <img src="{{album['album']['images'][1]['url']}}" alt="track img"
+                    class="track-card__img">
+
+                    <div class="track-card__content">
+                        <h3
+                        class="track-card__title">
+                        {{album["album"]["artists"][0]["name"]}}
+                    </h3>
+                    <p
+                        class="track-card__desc">
+                        Artist
+                    </p>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+
+    </section>
+    {% else %}
+        <section class="top-artist-month border-white border py-4 my-4">
+            <div 
+            class="top-artist-month__header flex justify-between px-5 mb-4">
+                <h3 
+                class="top-artist-month-title text-xl font-semibold">
+                    Your top tracks this month
+                </h3>
+
+                <button
+                class="top-artist-month-options font-medium text-pr-gray-200">
+                    SEE ALL
+                </button>
+            </div>
+
+            <div class="top-artist-month__card-container">
+                <div 
+                class="top-artist-month__container px-5">
+
+                    <div class="top-artist-month-card track-card">
+                        <img src="./../static/assets/images/profile_img/lil_tay.png" alt="track img"
+                        class="track-card__img">
+
+                        <div class="track-card__content">
+                            <h3
+                            class="track-card__title">
+                            Lil Tahcty
+                        </h3>
+                        <p
+                            class="track-card__desc">
+                            Artist
+                        </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="top-album-month border-white border py-4 my-4">
+            <div 
+            class="top-album-month__header flex justify-between px-5 mb-4">
+                <h3 
+                class="top-album-month-title text-xl font-semibold">
+                    Top Album of this month
+                </h3>
+
+                <button
+                class="top-album-month-options font-medium text-pr-gray-200">
+                    SEE ALL
+                </button>
+            </div>
+
+            <div class="top-album-month__card-container">
+                <div 
+                class="top-album-month__container px-5">
+
+                    <div class="top-album-month__card track-card">
+                        <img src="./../static/assets/images/profile_img/lil_tay.png" alt="track img"
+                        class="track-card__img">
+
+                        <div class="track-card__content">
+                            <h3
+                            class="track-card__title">
+                            Lil Tahcty
+                        </h3>
+                        <p
+                            class="track-card__desc">
+                            Artist
+                        </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="top-mix border-white border p-4 my-4">
+            <div 
+            class="top-mix__header flex justify-between px-5 mb-4">
+                <h3
+                class="top-mix-title text-xl font-semibold">
+                    Exclusivly mix for you
+                </h3>
+
+                <button
+                class="top-mix-options font-medium text-pr-gray-200">
+                    SEE ALL
+                </button>
+            </div>
+
+            <div class="top-mix__card-container overflow-x-auto flex rounded-4xl items-center py-4">
+                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>                <div 
+                class="top-mix__container px-5">
+
+                    <div class="top-mix__card mix-card">
+
+                        <div class="mix-card__img-container">
+                            <img src="./../static/assets/images/profile_img/mix-1.png" alt="track img"
+                            class="mix-card__img">
+                            <span class="mix-card__mix-label">
+                                Pop Mix
+                            </span>
+                        </div>
+
+
+                        <div class="mix-card__content">
+                            <h3
+                            class="mix-card__title">
+                            Pop Mix
+                        </h3>
+                        <p
+                            class="mix-card__desc">
+                            Dua Lipa, Drake and more!
+                        </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    {% endif %}
+
+{% endblock %}
