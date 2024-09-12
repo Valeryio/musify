@@ -728,6 +728,8 @@ img
   {
   min-width: 18rem;
   width: 16rem;
+  max-height: 56rem;
+  overflow: auto;
   color: #949494;
   padding: 1.5rem 0;
   border-radius: .5rem;
@@ -746,10 +748,17 @@ img
   padding: 0.4rem 2rem;
 }
 
+.sidebar__item-content
+  {
+  text-align: left;
+}
+
 .sidebar__item
   {
   display: flex;
   gap: 1rem;
+  width: 100%;
+  justify-content: start;
   padding: 1rem 1.5rem;
 }
 
@@ -765,7 +774,8 @@ img
   background: linear-gradient(to right, rgb(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
 
-.sidebar__item-active::after
+.sidebar__item:hover::after,
+  .sidebar__item-active::after
   {
   top: 0;
   right: 0;
@@ -821,6 +831,9 @@ img
 
 .artist-card__cta
   {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
   margin: 3rem 0 0 0;
   padding: 1rem 2rem;
   background: #151313;
@@ -828,6 +841,14 @@ img
   font-weight: 600;
   border: 1px solid #1DB954;
   border-radius: 2rem;
+  transition: all ease-in .3s;
+}
+
+.artist-card__cta:hover
+  {
+  color: white;
+  font-weight: 600;
+  background: #1DB954;
 }
 
 /*------------------------------------*\
@@ -836,11 +857,15 @@ img
 
 .artist-song
   {
-  display: flex;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: 1fr;
+  grid-template-columns: 32rem 6rem 6rem;
   padding: 1rem 1rem;
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
+  transition: all .5s ease-in;
 }
 
 .artist-song__number
@@ -854,11 +879,23 @@ img
   font-weight: 100;
 }
 
+.artist-song_img
+  {
+  border-radius: 1rem;
+}
+
 .artist-song__content
   {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-rows: 1fr;
+  grid-template-columns: 4rem 4rem 16rem;
   align-items: center;
+}
+
+.artist-song:hover
+  {
+  background: linear-gradient(to right bottom, #292626, #1DB954);
 }
 
 /*------------------------------------*\
@@ -868,7 +905,7 @@ img
 .album-presentation
   {
   display: flex;
-  gap: 1rem;
+  gap: 2rem 1rem;
   height: -moz-fit-content;
   height: fit-content;
   justify-content: center;
@@ -904,7 +941,7 @@ img
   {
   font-size: .8rem;
   font-weight: 700;
-  padding: .5rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 2rem;
   background-color: #1DB954;
 }
@@ -993,6 +1030,62 @@ img
   font-weight: 600;
 }
 
+/*------------------------------------*\
+              audio_player component
+  \*------------------------------------*/
+
+.audio-player
+  {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.audio-player__track-buttons
+  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-player__seek-slider
+  {
+  width: 20rem;
+}
+
+.audio-player__seek-slider,
+  .audio-player__volume_slider
+  {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #ffffff98;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.audio-player__seek-slider::-webkit-slider-thumb,
+  .audio-player__volume_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.audio-player__volume
+  {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .static{
   position: static;
 }
@@ -1009,6 +1102,10 @@ img
 
 .mb-10{
   margin-bottom: 2.5rem;
+}
+
+.mb-2r{
+  margin-bottom: 2rem;
 }
 
 .mb-4{
@@ -1032,11 +1129,15 @@ img
 }
 
 .h-12{
-  height: 20rem;
+  height: 3rem;
+}
+
+.h-24{
+  height: 24rem;
 }
 
 .grid-cols-45x65{
-  grid-template-columns: minmax(45rem, 80rem) auto;
+  grid-template-columns: auto 24rem;
 }
 
 .flex-col{
@@ -1095,11 +1196,6 @@ img
   border-width: 1px;
 }
 
-.border-violet-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(124 58 237 / var(--tw-border-opacity));
-}
-
 .border-white{
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
@@ -1133,6 +1229,11 @@ img
   padding-right: 1rem;
 }
 
+.px-4r{
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -1141,6 +1242,11 @@ img
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-2r{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .py-4{
@@ -1174,3 +1280,8 @@ img
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+
+
+
+
+

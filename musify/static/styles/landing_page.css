@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+body
+{
+  padding: 4rem;
+  color: white;
+  background: #0A0A0A;
+
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.header
+{
+  display: flex;
+  margin: 0 0 4rem 0;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid white;
+}
+
+.header__nav
+{
+  gap: 2rem;
+  display: flex;
+}
+
+.header__nav-item
+{
+  color: white;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.header__nav-item:hover
+{
+  color: #748d7d;
+}
+
+
+.header::before
+{
+  top: 1rem;
+  left: 1rem;
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 48.75%;
+  height: 56rem;
+  border-radius: 2rem;
+  background: #121212;
+}
+
+.header::after
+{
+  top: 1rem;
+  right: 1rem;
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 48.75%;
+  height: 56rem;
+  border-radius: 2rem;
+  background: linear-gradient(to right bottom, #0D2616, #121212);
+}
+
+.hero-header
+{
+  display: flex;
+  gap: 2rem;
+  margin: 0 0 6rem 0;
+  border: 1px solid;
+  padding: 1rem 0 6rem 0;
+  justify-content: space-between;
+}
+
+.hero-header__content
+{
+  max-width: 32rem;
+  bordeR: 1px solid;
+}
+
+.hero-header__title
+{
+  font-size: 4rem;
+}
+
+.hero-header__button
+{
+  max-width: 10rem;
+  color: white;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  font-weight: 600;
+  background: transparent;
+  border-radius: 2rem;
+
+  border: 1px solid white;
+}
+
+.feature
+{
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 12rem 0 4rem 0;
+}
+
+.feature::before
+{
+  content: "";
+}
+
+
+.feature__number
+{
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #0D2616;
+  margin: 0;
+  border: 1px solid white;
+}
+
+.feature__title,
+.feature__desc
+{
+  max-width: 56rem;
+  bordeR: 1px solid;
+  text-align: center;
+}
+
+.feature__title
+{
+  font-size: 4rem;
+  margin: 0;
+}
+
+.feature__desc
+{
+  
+}

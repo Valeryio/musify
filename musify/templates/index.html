@@ -6,47 +6,52 @@
 
 {% block content %}
 
-    {% if albums %}
+    {% if albums_list %}
 
-    <section class="top-artist-month border-white border py-4 my-4">
-        <div 
-        class="top-artist-month__header flex justify-between px-5 mb-4">
-            <h3 
-            class="top-artist-month-title text-xl font-semibold">
-                Your top tracks this month
-            </h3>
-
-            <button
-            class="top-artist-month-options font-medium text-pr-gray-200">
-                SEE ALL
-            </button>
-        </div>
-
+        {% for album_genre, albums in albums_list.items() %}
+        <section class="top-artist-month py-4 my-4">
             <div
-            class="top-artist-month__container px-5 border border-violet-600 justify-center items-center flex flex-wrap gap-10">
+            class="top-artist-month__header flex justify-between px-5 mb-4">
+                <h3
+                class="top-artist-month-title text-xl font-semibold">
+                    Top recommendations of {{ album_genre }}
+                </h3>
 
-                {% for album in albums %}
-                <div class="top-artist-month-card track-card">
-                    <img src="{{album['album']['images'][1]['url']}}" alt="track img"
-                    class="track-card__img">
-
-                    <div class="track-card__content">
-                        <h3
-                        class="track-card__title">
-                        {{album["album"]["artists"][0]["name"]}}
-                    </h3>
-                    <p
-                        class="track-card__desc">
-                        Artist
-                    </p>
-                    </div>
-                </div>
-
-                {% endfor %}
+                <button
+                class="top-artist-month-options font-medium text-pr-gray-200">
+                    SEE ALL
+                </button>
             </div>
 
-    </section>
+                <div
+                class="top-artist-month__container px-5 justify-center items-center flex flex-wrap gap-10">
+
+                    {% for album in albums %}
+                        <div class="top-artist-month-card track-card">
+
+                            <a href="{{album['album']['external_urls']['spotify']}}" target="_blank">
+                                <img src="{{album['album']['images'][1]['url']}}" alt="track img"
+                            class="track-card__img">
+                            </a>
+                            <div class="track-card__content">
+                                <h3
+                                class="track-card__title">
+                                {{album["album"]["artists"][0]["name"]}}
+                            </h3>
+                            <p
+                                class="track-card__desc">
+                                Artist
+                            </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        </section>
+        {% endfor %}
+
     {% else %}
+
+    {{albums_lists}}
         <section class="top-artist-month border-white border py-4 my-4">
             <div 
             class="top-artist-month__header flex justify-between px-5 mb-4">

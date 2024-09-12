@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <!-- Load FontAwesome icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link rel="shortcut icon" href=" {{ url_for('static', filename='assets/images/logo/icon_musify') }}">
         <link rel="stylesheet" href=" {{ url_for('static', filename='/styles/output.css') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
@@ -11,16 +14,18 @@
     </head>
     <body class="bg-maroon p-4 text-white font-raleway">
 
-        {{ headers }}
         <header
-        class="header border border-white flex justify-between items-center mb-4">
-            <img src=" {{ url_for('static', filename='assets/images/logo/white_musify-logo.svg') }}" alt="Logo of musify"
-            class="header__logo">
+        class="header  flex justify-between items-center mb-4">
+
+            <a href=" {{ url_for('index') }} ">
+                <img src=" {{ url_for('static', filename='assets/images/logo/white_musify-logo.svg') }}" alt="Logo of musify"
+                class="header__logo">
+            </a>
 
             <form action="" class="header__search_bar-form" method="post">
                 {{ form.hidden_tag() }}
                 {% if search_data %}
-                    {{ form.search_field(class="search_bar", placeholder="Search music, track, albums...", value=search_data) }}
+                    {{ form.search_field(class="search_bar", placeholder="Search for an artist...", value=search_data) }}
                 {% else %}
                     {{ form.search_field(class="search_bar", placeholder="Search for an artist...") }}
                 {% endif %}
@@ -35,6 +40,7 @@
         {% block content %}
         {% endblock %}
 
-
+        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
+<!--        <script src="../../static/js/script.js" ></script>-->
     </body>
 </html>

@@ -82,7 +82,7 @@ class Spotify():
         self.get_token()
         return {"Authorization": "Bearer " + self.token}
 
-    def get_recommanded_albums(self, number=1):
+    def get_recommanded_albums(self, genre="pop", number=1):
         """Gets a customised global recommandation from the SPOTIFY
         WEB API
 
@@ -94,8 +94,8 @@ class Spotify():
         """
 
         url = "https://api.spotify.com/v1/recommendations"
-        query = f"?seed_genres=pop%2Ccountry&limit={number}"
-        # Pop Blues/ RNB
+        query = f"?seed_genres={genre}%2Ccountry&limit={number}"
+
         url_query = url + query
         response = get(url_query, headers=self.get_header())
         track_list = json.loads(response.content)

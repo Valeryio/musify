@@ -30,7 +30,7 @@ module.exports = {
       gridTemplateColumns:
       {
         '2x': "16rem 1fr",
-        "45x65": "minmax(45rem, 80rem) auto"
+        "45x65": "auto 24rem",
       },
       padding: {
         '1r': "1rem",
@@ -48,7 +48,9 @@ module.exports = {
         '12r': '12rem',
       },
       spacing: {
-        '12': '20rem',
+        '20': '20rem',
+        '24': '24rem',
+        '32': '32rem',
       }
     },
   },

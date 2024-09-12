@@ -6,6 +6,11 @@ from musify.forms import SearchForm, AlbumForm
 
 
 @app.route("/", strict_slashes=False, methods=["GET", "POST"])
+def landing_page():
+    return render_template("landing_page.html")
+
+
+
 @app.route("/home", strict_slashes=False, methods=["GET", "POST"])
 def index():
     """ This is the index route endpoint
@@ -25,20 +30,16 @@ def index():
     if result is not None:
         return redirect(url_for("artist_page", search_data=result))
 
-    """
-    if form.validate_on_submit():
-        search_data = form.search_field.data
-        print(search_data)
-        return redirect(url_for("get_artist", search_data=search_data))
-    
-    if form.errors != {}:
-        for err_msg in form.errors.values():
-            print("Error : ", err_msg)
-    """
-
     headers = spotify_client.get_header()
-    albums = spotify_client.get_recommanded_albums(6)
-    return render_template("index.html", headers=headers, albums=albums, form=form)
+
+    genres = ["pop", "classical", "RNB"]
+    albums_list = {}
+
+    for genre in genres:
+        albums_list[genre] = spotify_client.get_recommanded_albums(genre, 7)
+
+    albums_anime = spotify_client.get_recommanded_albums("French Hip Hop", 7)
+    return render_template("index.html", headers=headers, albums_list=albums_list, albums_anime=albums_anime, form=form)
 
 
 @app.route("/artist/<string:search_data>", strict_slashes=False, methods=["GET", "POST"])
@@ -98,6 +99,11 @@ def songs_page(artist_name, album_id):
     return render_template("songs.html", form=form, album=album)
 
 
+@app.route("/albums/<redirect_link>")
+def redirected_page(redirect_link):
+    return redirect(redirect_link)
+
+
 def form_redirect(form):
     """Analyse the form if submit
 
@@ -109,7 +115,6 @@ def form_redirect(form):
     """
     if form.validate_on_submit():
         search_data = form.search_field.data
-        print(search_data)
         return search_data
     
     if form.errors != {}:

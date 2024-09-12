@@ -6,19 +6,17 @@ Album songs
 
 {% block content %}
 
-{# album #}
-
     <section class="artist-section items-start grid grid-cols-45x65">
         <div class="artist-section__main mx-4 px-4 items-start">
             <div class="artist-section__artist-description artist-card-bio">
 
-
                 <div class="artist-card-bio__breadcrum mb-10" >
                     <div class="breadcrum">
+
                         <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt=""class="back-option" >
 
                         <div class="breadcrum-content">
-                            <a href="#" class="breadcrum-precedent">Home</a>
+                            <a href="{{ url_for('index') }}" class="breadcrum-precedent">Home</a>
                             <img src=" {{ url_for('static', filename='assets/images/icons/forward.svg') }}" alt="" class="next-option">
                             <a href="#" class="breadcrum-current"> {{ album["artists"][0]["name"] }} </a>
                         </div>
@@ -43,69 +41,100 @@ Album songs
 
             </div>
 
-
             <div
-            class="artist-song__container gap-4 h-12 overflow-auto grid my-4 py-4">
+            class="artist-song__container gap-4 h-24 overflow-auto grid my-4 py-4">
 
                 {% for song in album["tracks"]["items"] %}
-                <div class="artist-song">
-                    <div class="artist-song__content">
-                        <p class="artist-song__number">{{ song["track_number"] }}</p>
-                        <img src="{{ album['images'][2]['url'] }}" alt="An artist song">
-                        <p class="artist-song__name">
-                            {{ song["name"] }}
-                        </p>
+                    <div class="artist-song">
+                        <div class="artist-song__content">
+                            <p class="artist-song__number">{{ song["track_number"] }}</p>
+                            <img src="{{ album['images'][2]['url'] }}" class="artist-song_img" alt="An artist song">
+                            <p class="artist-song__name">
+                                {{ song["name"] }}
+                            </p>
+                        </div>
+
+                        <p class="artist-song__duration">{{ song["duration_ms"] | music_time }}</p>
+                        {{ song["preview_url"] }}
+                        <img src=" {{ url_for('static', filename='assets/images/icons/dots.svg') }}" alt="Three dots" class="artist-song__more-options">
                     </div>
-
-                    {# song["preview_url"] #}
-                    {% for song_artist in song["artists"] %}
-                        <p class="artist-song__listeners"> {{ song_artist["name"] }} </p>
-                    {% endfor %}
-                    <img src=" {{ url_for('static', filename='assets/images/icons/dots.svg') }}" alt="Three dots" class="artist-song__more-options">
-                </div>
-
                 {% endfor %}
 
             </div>
         </div>
 
-        <div class="artist_records rounded p-2 flex-col gap-2 bg-pr-black-600">
+        <div class="artist_records rounded p-2 py-2r flex-col gap-2 bg-pr-black-600">
             <div class="album-presentation">
                 <img src="{{ album['images'][0]['url'] }}" alt="" class="artist_records__b-album-cover">
 
                 <div class="album-presentation__content"> 
                     <div class="album-presentation__infos">
-                        <h3 class="album-presentation__title">Dietro Casa</h3>
-                        <p class="album-presentation__artist">Ed Sheeran</p>
+                        <h3 class="album-presentation__title">
+                            {{ album["tracks"]["items"][0]["name"] }}
+                        </h3>
+                        <p class="album-presentation__artist">{{ album["artists"][0]["name"] }}</p>
                     </div>
 
-                    <button class="album-repsentation__discover-btn" >Discover</button>
+                    <a href="#" class="album-repsentation__discover-btn" >Discover</a>
                 </div>
             </div>
 
-            <div class="artist-tours tours">
-                <div class="tours-header">
-                    <h3 class="tours-header__title">On tour</h3>
-                    <button class="tours-header__show-all-btn">Show all</button>
+
+            <div class="audio-player">
+                <audio
+                        class="audio-player__song"
+                        src="{{ album['tracks']['items'][27]['preview_url'] }}" controls >
+                </audio>
+                <div class="audio-player__durations">
+                    <span class="audio-player__current-duration">
+                    </span>
+                    <input type="range" min="1" max="100" value="1"
+                    class="audio-player__seek-slider">
+                    <span class="audio-player__total-duration">
+                    </span>
                 </div>
 
-                <div class="tours__container">
-                    <div class="tours__item">
-                        <div class="tours__date-box">
-                            <span class="tours__day">6</span>
-                            <span class="tours__month">Sep</span>
-                        </div>
-                        <div class="tours__informations">
-                            <h4 class="tours__localisation">Turin</h4>
-                            <p class="tours__artist-name">Ed sheeran</p>
-                            <p class="tours__desc">
-                                <span class="tours__date-hours">Sat 8:30 PM</span>
-                                <span class="tours__place">Piazza San Carlo</span>
-                            </p>
-                        </div>
-                    </div>
+                <div class="audio-player__track-buttons">
+
+                    <button class="audio-player__play_pause">
+                        <i class="fa fa-play-circle fa-5x"></i>
+                    </button>
+
                 </div>
+
+                <div class="audio-player__volume">
+                    <i class="fa fa-volume-down"></i>
+                    <input type="range" min="1" max="100" value="1"
+                    class="audio-player__volume_slider">
+                    <i class="fa fa-volume-up"></i>
+                </div>
+
             </div>
+
+
+<!--            <div class="artist-tours tours">-->
+<!--                <div class="tours-header">-->
+<!--                    <h3 class="tours-header__title">On tour</h3>-->
+<!--                    <button class="tours-header__show-all-btn">Show all</button>-->
+<!--                </div>-->
+
+<!--                <div class="tours__container">-->
+<!--                    <div class="tours__item">-->
+<!--                        <div class="tours__date-box">-->
+<!--                            <span class="tours__day">6</span>-->
+<!--                            <span class="tours__month">Sep</span>-->
+<!--                        </div>-->
+<!--                        <div class="tours__informations">-->
+<!--                            <h4 class="tours__localisation">Turin</h4>-->
+<!--                            <p class="tours__artist-name">Ed sheeran</p>-->
+<!--                            <p class="tours__desc">-->
+<!--                                <span class="tours__date-hours">Sat 8:30 PM</span>-->
+<!--                                <span class="tours__place">Piazza San Carlo</span>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </section>
 
