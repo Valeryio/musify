@@ -36,7 +36,7 @@ module.exports = {
         '1r': "1rem",
         '2r': "2rem",
         '4r': "4rem",
-        '8': '8rem',
+        '8r': '8rem',
         '10': '10rem',
         '12': '12rem',
       },

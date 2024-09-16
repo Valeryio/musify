@@ -11,8 +11,9 @@
         <div class="artist-section__sidebar sidebar">
             <div class="sidebar__breadcrum flex items-center mb-2r justify-center">
                 <div class="breadcrum">
-                    <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt="" class="back-option" >
-
+                    <a href="" class="back-option">
+                        <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt=""class="" >
+                    </a>
                     <div class="breadcrum-content">
                         <a href="{{ url_for('index') }}" class="breadcrum-precedent">Home</a>
                         <img src="{{ url_for('static', filename='assets/images/icons/forward.svg') }}" alt="" class="next-option">
@@ -55,7 +56,9 @@
                     <p class="artist-card__listeners"> <span class="artist-card__listeners-number"> {{ artist["items"][0]["followers"]["total"] }} </span> Followers on Spotify</p>
                 </div>
 
-                <a class="artist-card__cta" href="{{ artist['items'][0]['external_urls']['spotify'] }}" > Discover on Spotify</a>
+                <a class="artist-card__cta" href="{{ artist['items'][0]['external_urls']['spotify'] }}" >
+                    Discover on Spotify
+                </a>
 
                 <img src="{{ artist['items'][0]['images'][1]['url'] }}" alt="" class="artist-card__img">
 
@@ -69,13 +72,13 @@
                         Top tracks of {{ artist["items"][0]["name"] }}
                     </h3>
 
-                    <button
+                    <a href="{{ artist['items'][0]['external_urls']['spotify'] }}"
                     class="top-album-month-options font-medium text-pr-gray-200">
-                        SEE ALL
-                    </button>
+                        
+                    </a>
                 </div>
 
-                <div class="top-album-month__card-container px-4r flex gap-10 flex-wrap">
+                <div class="top-album-month__card-container h-32 overflow-auto px-4r flex gap-10 flex-wrap justify-start">
 
                     {% for track in top_tracks %}
                         <div class="top-album-month__card track-card">
@@ -85,12 +88,15 @@
                             <div class="track-card__content">
                                 <h3
                                 class="track-card__title">
-                                {{ track["album"]["name"] }}
-                            </h3>
-                            <p
-                                class="track-card__desc">
-                                {{ artist["items"][0]["name"] }}
-                            </p>
+                                <span>
+
+                                    {{ track["album"]["name"] }}
+                                </span>
+                                </h3>
+                                <p
+                                    class="track-card__desc">
+                                    {{ artist["items"][0]["name"] }}
+                                </p>
                             </div>
                         </div>
                     {% endfor %}
@@ -101,4 +107,5 @@
 
     </section>
 
+    <script src="{{url_for('static', filename='js/sidebar.js')}}" ></script>
 {% endblock %}

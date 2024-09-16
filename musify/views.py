@@ -36,10 +36,9 @@ def index():
     albums_list = {}
 
     for genre in genres:
-        albums_list[genre] = spotify_client.get_recommanded_albums(genre, 7)
+        albums_list[genre] = spotify_client.get_recommanded_albums(genre, 10)
 
-    albums_anime = spotify_client.get_recommanded_albums("French Hip Hop", 7)
-    return render_template("index.html", headers=headers, albums_list=albums_list, albums_anime=albums_anime, form=form)
+    return render_template("index.html", headers=headers, albums_list=albums_list, form=form)
 
 
 @app.route("/artist/<string:search_data>", strict_slashes=False, methods=["GET", "POST"])

@@ -3,20 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>Musify</title>
-        <link rel="stylesheet" href="../static/styles/input.css">
-        <link rel="stylesheet" href="../static/styles/landing_page.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='/styles/landing_page.css') }}">
     </head>
     <body>
 
         <header class="header">
             <a href="#">
-                <img src="../static/assets/images/logo/green_musify.svg" alt="" class="header__logo">
+                <img src="{{ url_for('static', filename='/assets/images/logo/green_musify.svg') }}" alt="" class="header__logo">
             </a>
 
             <nav class="header__nav">
-                <a href="" class="header__nav-item">Intro</a>
-                <a href="" class="header__nav-item">About</a>
-                <a href="" class="header__nav-item">Features</a>
+                <a href="#" class="header__nav-item">Intro</a>
+                <a href="#about" class="header__nav-item">About</a>
+                <a href="#feature" class="header__nav-item">Features</a>
             </nav>
         </header>
 
@@ -31,15 +30,15 @@
                     music. Get personalized recomandations by genre!
                 </p>
 
-                <a class="hero-header__button">
+                <a class="hero-header__button" href="{{ url_for('index') }}">
                     <span>GO TO THE APP</span>
-                    <img src="../static/assets/images/icons/arrow_to_top.svg" alt="">
+                    <img src="{{ url_for('static', filename='/assets/images/icons/arrow_to_top.svg') }}" alt="">
                 </a>
             </div>
-            <img src="../static/assets/images/logo/big.png" alt="" class="hero-header__img">
+            <img src="{{ url_for('static', filename='/assets/images/logo/big.png')}}" alt="" class="hero-header__img">
         </section>
 
-        <section class="feature">
+        <section class="feature feature-bj" id="feature">
 
             <p class="feature__number"> 01</p>
 
@@ -48,15 +47,80 @@
                     Get music recommandation with Musify
                 </h2>
                 <p class="feature__desc">
-                    Upgrade to Spotify Premium and take your music journey to the next level. 
-                    Enjoy uninterrupted music playback, even in offline mode. Say goodbye to 
-                    those pesky ads, and indulge in high-quality audio for a truly immersive 
+                    Discover detailed information about your favorite artists with 
+                    Musify. Explore their biography, discography, and 
+                    popularity directly from Spotify for an enhanced music 
                     experience.
                 </p>
             </div>
 
-            <img src="../static/assets/images/profile_img/musify_home.png" alt="" class="feature__img">
+            <img src="{{ url_for('static', filename='/assets/images/profile_img/musify_home.png') }}" alt="" class="feature__img">
         </section>
+
+        <section class="feature">
+
+            <p class="feature__number"> 02</p>
+
+            <div class="feature__content">
+                <h2 class="feature__title">
+                    Discover albums and artists
+                </h2>
+                <p class="feature__desc">
+                    Musify offers a comprehensive look at albums and suggests similar 
+                    songs based on your tastes. Find new tracks that match your 
+                    musical preferences.
+                </p>
+            </div>
+
+            <img src="{{ url_for('static', filename='/assets/images/profile_img/spotify_artist.png') }}" alt="" class="feature__img">
+        </section>
+
+        <section class="feature feature-bj">
+
+            <p class="feature__number"> 03</p>
+
+            <div class="feature__content">
+                <h2 class="feature__title">
+                    Enhance Your Music Journey with Musify
+                </h2>
+                <p class="feature__desc">
+                    Listen to previews of the latest albums with Musify. Easily access snippets 
+                    of each track to decide which albums to add to your playlist.
+                </p>
+            </div>
+
+            <img src="{{ url_for('static', filename='/assets/images/profile_img/album_songs.png') }}" alt="" class="feature__img">
+        </section>
+
+
+        <section class="about">
+            <h2 class="about__title" id="about" >About</h2>
+            <p class="about__desc">
+                Musify is a dynamic app that leverages Spotify’s API to bring you a seamless 
+                music experience. Explore detailed artist profiles, discover new albums, 
+                and get personalized song recommendations.
+            </p>
+            <button class="about__btn"> Learn more </button>
+        </section>
+
+        <footer class="footer">
+
+            <a href="#">
+                <img src="{{ url_for('static', filename='/assets/images/icons/white_musify.svg') }}" alt="">
+            </a>
+
+            <nav class="footer__nav">
+                <a href="#" class="footer__nav-item">
+                    <img src="{{ url_for('static', filename='/assets/images/icons/instagram.svg') }}" alt="">
+                </a>
+                <a href="#" class="footer__nav-item">
+                    <img src="{{ url_for('static', filename='/assets/images/icons/twitter.svg') }}" alt="">
+                </a>
+                <a href="#" class="footer__nav-item">
+                    <img src="{{ url_for('static', filename='/assets/images/icons/facebook.svg') }}" alt="">
+                </a>
+            </nav>
+        </footer>
 
     </body>
 </html>

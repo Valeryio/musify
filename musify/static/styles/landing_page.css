@@ -7,7 +7,7 @@ body
   padding: 4rem;
   color: white;
   background: #0A0A0A;
-
+  scroll-behavior: smooth;
   font-family: "Source Sans 3", sans-serif;
 }
 
@@ -17,7 +17,6 @@ body
   margin: 0 0 4rem 0;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid white;
 }
 
 .header__nav
@@ -70,7 +69,6 @@ body
   display: flex;
   gap: 2rem;
   margin: 0 0 6rem 0;
-  border: 1px solid;
   padding: 1rem 0 6rem 0;
   justify-content: space-between;
 }
@@ -78,7 +76,6 @@ body
 .hero-header__content
 {
   max-width: 32rem;
-  bordeR: 1px solid;
 }
 
 .hero-header__title
@@ -88,17 +85,17 @@ body
 
 .hero-header__button
 {
-  max-width: 10rem;
+  max-width: 12rem;
   color: white;
   display: flex;
   gap: 1rem;
   align-items: center;
+  text-decoration: none;
   justify-content: space-between;
   padding: .5rem 1rem;
   font-weight: 600;
   background: transparent;
   border-radius: 2rem;
-
   border: 1px solid white;
 }
 
@@ -111,9 +108,22 @@ body
   margin: 12rem 0 4rem 0;
 }
 
-.feature::before
+.feature-bj
 {
+  position: relative;
+}
+
+.feature-bj::before
+{
+  top: -1rem;
+  left: -3rem;
+  z-index: -1;
   content: "";
+  width: 107%;
+  height: 64rem;
+  border-radius: 2rem;
+  position: absolute;
+  background: #121212;
 }
 
 
@@ -124,14 +134,12 @@ body
   text-align: center;
   color: #0D2616;
   margin: 0;
-  border: 1px solid white;
 }
 
 .feature__title,
 .feature__desc
 {
   max-width: 56rem;
-  bordeR: 1px solid;
   text-align: center;
 }
 
@@ -141,7 +149,55 @@ body
   margin: 0;
 }
 
+.feature__img
+{
+  border-radius: 1rem;
+}
+
 .feature__desc
 {
   
+}
+
+.about
+{
+  margin: 8rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.about__title
+{
+  font-size: 2rem;
+  margin: 0;
+}
+
+.about__desc
+{
+  font-weight: 1.5rem;
+  max-width: 48rem;
+  text-align: center;
+}
+
+.about__btn
+{
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+  width: fit-content;
+  padding: .5rem 2rem;
+  border-radius: 2rem;
+  background: transparent;
+  border: 1px solid white;
+}
+
+.footer
+{
+  display: flex;
+  padding: 1rem 2rem;
+  background: #121212;
+  border-radius: 2rem;
+  justify-content: space-between;
 }

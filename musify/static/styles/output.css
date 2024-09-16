@@ -582,8 +582,8 @@ img
 
 .track-card
   {
-  width: 10rem;
-  height: 14rem;
+  width: 12rem;
+  height: 18rem;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -594,7 +594,10 @@ img
 
 .track-card__title
   {
+  font-size: .8rem;
   font-weight: 600;
+  margin: 1rem 0;
+  overflow-wrap: normal;
 }
 
 .track-card__img
@@ -859,6 +862,7 @@ img
   {
   display: grid;
   gap: 1rem;
+  max-height: 6rem;
   grid-template-rows: 1fr;
   grid-template-columns: 32rem 6rem 6rem;
   padding: 1rem 1rem;
@@ -902,7 +906,7 @@ img
       album-presentation bar component
   \*------------------------------------*/
 
-.album-presentation
+.displayed-song-presentation
   {
   display: flex;
   gap: 2rem 1rem;
@@ -917,28 +921,39 @@ img
   background-color: #212121;
 }
 
-.album-presentation__content
+.displayed-song-presentation__content
   {
   display: flex;
   padding: 0.5rem 1rem;
+  align-items: center;
   justify-content: space-between;
 }
 
-.album-presentation__title
+.displayed-song-presentation__title
   {
   font-size: 1rem;
   font-weight: 600;
+  max-width: 12rem;
 }
 
-.album-presentation__artist
+.displayed-song-presentation__infos
+  {
+  /* border: 1px solid white; */
+}
+
+.displayed-song-presentation__artist
   {
   font-size: .8rem;
   color: #656565;
   font-weight: 600;
 }
 
-.album-repsentation__discover-btn
+.displayed-song-representation__discover-btn
   {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   font-size: .8rem;
   font-weight: 700;
   padding: 1rem 2rem;
@@ -1038,8 +1053,16 @@ img
   {
   display: flex;
   gap: 1.5rem;
+  padding: 0 0 2rem 0;
   flex-direction: column;
   align-items: center;
+}
+
+.audio-player__error
+  {
+  width: 100%;
+  padding: 0 1.5rem;
+  font-weight: 600;
 }
 
 .audio-player__track-buttons
@@ -1100,6 +1123,16 @@ img
   margin-bottom: 1rem;
 }
 
+.my-4r{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.my-8r{
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -1110,6 +1143,10 @@ img
 
 .mb-4{
   margin-bottom: 1rem;
+}
+
+.mb-8r{
+  margin-bottom: 8rem;
 }
 
 .block{
@@ -1136,6 +1173,18 @@ img
   height: 24rem;
 }
 
+.h-10{
+  height: 2.5rem;
+}
+
+.h-1{
+  height: 0.25rem;
+}
+
+.h-32{
+  height: 32rem;
+}
+
 .grid-cols-45x65{
   grid-template-columns: auto 24rem;
 }
@@ -1156,6 +1205,10 @@ img
   align-items: center;
 }
 
+.justify-start{
+  justify-content: flex-start;
+}
+
 .justify-center{
   justify-content: center;
 }
@@ -1166,6 +1219,10 @@ img
 
 .gap-10{
   gap: 2.5rem;
+}
+
+.gap-12{
+  gap: 3rem;
 }
 
 .gap-2{
@@ -1224,6 +1281,11 @@ img
   padding: 1rem;
 }
 
+.px-2r{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1239,14 +1301,19 @@ img
   padding-right: 1.25rem;
 }
 
+.px-6{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.py-2r{
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-4{

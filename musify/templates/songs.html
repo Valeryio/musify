@@ -13,7 +13,9 @@ Album songs
                 <div class="artist-card-bio__breadcrum mb-10" >
                     <div class="breadcrum">
 
-                        <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt=""class="back-option" >
+                        <a href="" class="back-option">
+                            <img src="{{ url_for('static', filename='assets/images/icons/Back.svg') }}" alt=""class="" >
+                        </a>
 
                         <div class="breadcrum-content">
                             <a href="{{ url_for('index') }}" class="breadcrum-precedent">Home</a>
@@ -45,17 +47,38 @@ Album songs
             class="artist-song__container gap-4 h-24 overflow-auto grid my-4 py-4">
 
                 {% for song in album["tracks"]["items"] %}
-                    <div class="artist-song">
-                        <div class="artist-song__content">
-                            <p class="artist-song__number">{{ song["track_number"] }}</p>
-                            <img src="{{ album['images'][2]['url'] }}" class="artist-song_img" alt="An artist song">
-                            <p class="artist-song__name">
+                    <div class="artist-song" 
+                    data-spotify-url="{{ song['external_urls']['spotify'] }}" 
+                    data-song-name=" {{ song['name'] }}" 
+                    data-preview-url="{{ song['preview_url'] }}">
+                
+                        <div class="artist-song__content"
+                        data-spotify-url="{{ song['external_urls']['spotify'] }}" 
+                        data-song-name=" {{ song['name'] }}" 
+                        data-preview-url="{{ song['preview_url'] }}">
+            
+                            <p class="artist-song__number"
+                            data-spotify-url="{{ song['external_urls']['spotify'] }}" 
+                            data-song-name=" {{ song['name'] }}" 
+                            data-preview-url="{{ song['preview_url'] }}">
+                            {{ song["track_number"] }}</p>
+                            
+                            <img src="{{ album['images'][2]['url'] }}" class="artist-song_img"
+                            data-spotify-url="{{ song['external_urls']['spotify'] }}" 
+                            data-song-name=" {{ song['name'] }}" 
+                            data-preview-url="{{ song['preview_url'] }}"
+                            alt="An artist song">
+                        
+                            <p class="artist-song__name"
+                            data-spotify-url="{{ song['external_urls']['spotify'] }}" 
+                            data-song-name=" {{ song['name'] }}" 
+                            data-preview-url="{{ song['preview_url'] }}">
                                 {{ song["name"] }}
                             </p>
                         </div>
 
                         <p class="artist-song__duration">{{ song["duration_ms"] | music_time }}</p>
-                        {{ song["preview_url"] }}
+                        
                         <img src=" {{ url_for('static', filename='assets/images/icons/dots.svg') }}" alt="Three dots" class="artist-song__more-options">
                     </div>
                 {% endfor %}
@@ -63,19 +86,22 @@ Album songs
             </div>
         </div>
 
-        <div class="artist_records rounded p-2 py-2r flex-col gap-2 bg-pr-black-600">
-            <div class="album-presentation">
+        <div class="artist_records rounded p-2 flex-col gap-2 bg-pr-black-600">
+            <div class="displayed-song-presentation">
                 <img src="{{ album['images'][0]['url'] }}" alt="" class="artist_records__b-album-cover">
 
-                <div class="album-presentation__content"> 
-                    <div class="album-presentation__infos">
-                        <h3 class="album-presentation__title">
+                <div class="displayed-song-presentation__content"> 
+                    <div class="displayed-song-presentation__infos">
+                        <h3 class="displayed-song-presentation__title">
                             {{ album["tracks"]["items"][0]["name"] }}
                         </h3>
-                        <p class="album-presentation__artist">{{ album["artists"][0]["name"] }}</p>
+                        <p class="displayed-song-presentation__artist {{ album['external_urls']['spotify'] }}">{{ album["artists"][0]["name"] }}</p>
                     </div>
 
-                    <a href="#" class="album-repsentation__discover-btn" >Discover</a>
+                    <a class="displayed-song-representation__discover-btn"
+                        href="#">
+                        Discover
+                    </a>
                 </div>
             </div>
 
@@ -83,8 +109,9 @@ Album songs
             <div class="audio-player">
                 <audio
                         class="audio-player__song"
-                        src="{{ album['tracks']['items'][27]['preview_url'] }}" controls >
+                        src="{{ album['tracks']['items'][0]['preview_url'] }}"  >
                 </audio>
+                <p class="audio-player__error"></p>
                 <div class="audio-player__durations">
                     <span class="audio-player__current-duration">
                     </span>
@@ -104,7 +131,7 @@ Album songs
 
                 <div class="audio-player__volume">
                     <i class="fa fa-volume-down"></i>
-                    <input type="range" min="1" max="100" value="1"
+                    <input type="range" min="1" max="100" value="40"
                     class="audio-player__volume_slider">
                     <i class="fa fa-volume-up"></i>
                 </div>
@@ -137,5 +164,8 @@ Album songs
 <!--            </div>-->
         </div>
     </section>
+
+    <script src="{{url_for('static', filename='js/sidebar.js')}}" ></script>
+    <script src="{{url_for('static', filename='js/audio_player.js')}}" ></script>
 
 {% endblock %} 

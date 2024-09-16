@@ -9,22 +9,22 @@
     {% if albums_list %}
 
         {% for album_genre, albums in albums_list.items() %}
-        <section class="top-artist-month py-4 my-4">
+        <section class="top-artist-month py-4 mb-8r">
             <div
-            class="top-artist-month__header flex justify-between px-5 mb-4">
+            class="top-artist-month__header flex justify-between px-5 mb-2r">
                 <h3
-                class="top-artist-month-title text-xl font-semibold">
+                class="top-artist-month-title text-xl font-semibold px-2r ">
                     Top recommendations of {{ album_genre }}
                 </h3>
 
                 <button
                 class="top-artist-month-options font-medium text-pr-gray-200">
-                    SEE ALL
+                    
                 </button>
             </div>
 
                 <div
-                class="top-artist-month__container px-5 justify-center items-center flex flex-wrap gap-10">
+                class="top-artist-month__container px-5 justify-center items-center flex flex-wrap gap-12">
 
                     {% for album in albums %}
                         <div class="top-artist-month-card track-card">

@@ -37,8 +37,8 @@
   \*------------------------------------*/
   .track-card
   {
-    width: 10rem;
-    height: 14rem;
+    width: 12rem;
+    height: 18rem;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,11 @@
   }
   .track-card__title
   {
+    font-size: .8rem;
     font-weight: 600;
+    margin: 1rem 0;
+
+    overflow-wrap: normal;
   }
   .track-card__img
   {
@@ -310,6 +314,7 @@
   {
     display: grid;
     gap: 1rem;
+    max-height: 6rem;
     grid-template-rows: 1fr;
     grid-template-columns: 32rem 6rem 6rem;
     padding: 1rem 1rem;
@@ -352,7 +357,7 @@
   /*------------------------------------*\
       album-presentation bar component
   \*------------------------------------*/
-  .album-presentation
+  .displayed-song-presentation
   {
     display: flex;
     gap: 2rem 1rem;
@@ -365,25 +370,33 @@
     overflow: hidden;
     background-color: #212121;
   }
-  .album-presentation__content
+  .displayed-song-presentation__content
   {
     display: flex;
     padding: 0.5rem 1rem;
+    align-items: center;
     justify-content: space-between;
   }
-  .album-presentation__title
+  .displayed-song-presentation__title
   {
     font-size: 1rem;
     font-weight: 600;
+    max-width: 12rem;
   }
-  .album-presentation__artist
+  .displayed-song-presentation__infos
+  {
+    /* border: 1px solid white; */
+  }
+  .displayed-song-presentation__artist
   {
     font-size: .8rem;
     color: #656565;
     font-weight: 600;
   }
-  .album-repsentation__discover-btn
+  .displayed-song-representation__discover-btn
   {
+    width: fit-content;
+    height: fit-content;
     font-size: .8rem;
     font-weight: 700;
     padding: 1rem 2rem;
@@ -478,8 +491,15 @@
   {
     display: flex;
     gap: 1.5rem;
+    padding: 0 0 2rem 0;
     flex-direction: column;
     align-items: center;
+  }
+  .audio-player__error
+  {
+    width: 100%;
+    padding: 0 1.5rem;
+    font-weight: 600;
   }
   .audio-player__track-buttons
   {

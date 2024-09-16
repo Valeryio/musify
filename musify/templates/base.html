@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <!-- Load FontAwesome icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-        <link rel="shortcut icon" href=" {{ url_for('static', filename='assets/images/logo/icon_musify') }}">
+        <link rel="icon" href=" {{ url_for('static', filename='assets/images/logo/big.png') }}">
+        <!-- <link rel="icon" href=" {{ url_for('static', filename='assets/images/logo/bigfavicon.png') }}"> -->
         <link rel="stylesheet" href=" {{ url_for('static', filename='/styles/output.css') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
@@ -32,15 +33,14 @@
                 {{ form.submit(class="hidden") }}
             </form>
 
-            <div class="header__cta">
-                <button class="py-2 px-5 bg-pr-green-800 rounded-4xl " >Share</button>
+            <div>
+                <button class=" header__cta py-3 px-6 bg-pr-green-800 rounded-4xl" data-link="My link" >Share</button>
             </div>
         </header>
 
         {% block content %}
         {% endblock %}
 
-        <script src="{{url_for('static', filename='js/script.js')}}" ></script>
-<!--        <script src="../../static/js/script.js" ></script>-->
+        <script src="{{url_for('static', filename='js/config.js')}}" ></script>
     </body>
 </html>
