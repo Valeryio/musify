@@ -8,7 +8,7 @@ shareBtn.addEventListener("click", (e) => {
 
   updateBtnStatus = setInterval(() => {
     shareBtn.innerHTML = "Share";
-  }, 3000);
+  }, 800);
 
   updateButton = clearInterval();
 })
