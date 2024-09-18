@@ -3,7 +3,7 @@
 ![img.png](img.png)
 
 A musical project done with the Spotify Web API to play music from artists, get their albums and
-have great musical recommandations.
+have great musical recommendations.
 
 ## Table of Contents
 - [Technologies](#technologies)
