@@ -1,4 +1,4 @@
-# musify
+# Musify
 
 ![img.png](img.png)
 
