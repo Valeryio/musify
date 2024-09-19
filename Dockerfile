@@ -11,5 +11,8 @@ COPY . .
 # Install the application dependencies
 RUN pip install -r requirements.txt
 
+# Expose a specific port of my application
+EXPOSE 5000
+
 # Define the entry point for the container
 CMD ["python", "deploy.py"]
