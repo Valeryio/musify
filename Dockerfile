@@ -12,4 +12,4 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # Define the entry point for the container
-CMD ["python", "run.py"]
+CMD ["python", "deploy.py"]
