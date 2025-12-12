@@ -73,7 +73,7 @@ class Spotify():
         self.token = self.authorization_details["access_token"]
         
         #print("The response : \nContent :", response.content)
-        print("The token : ", self.token)
+        #print("The token : ", self.token)
     
     def get_header(self):
         """
@@ -96,16 +96,12 @@ class Spotify():
         url = "https://api.spotify.com/v1/recommendations"
         query = f"?seed_genres={genre}%2Ccountry&limit={number}"
 
-        # url_query = url + query
-        url_query = "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX,2s8r5D8uD96aySQJplzuG5,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc,0TCb7xCgT5JFTl6LnCJZlY,4C9mVDiMHuxOZ2eORwkCE1"
+        url_query = url + query
         response = get(url_query, headers=self.get_header())
-        print("THE RESPONSE ~: ", response)
         track_list = json.loads(response.content)
-        # print("Type of the track_list : ", track_list, type(track_list))
-        # print("The trak_list : ", track_list)
 
         # Only get the tracks objects and not the seeds
-        track_list = track_list["albums"]
+        track_list = track_list["tracks"]
 
         # Deletes some useless keys
         track_list = self.format_album_track(track_list)
@@ -131,8 +127,7 @@ class Spotify():
         for track in track_list:
             for key in keys:
                 try:
-                    print(type(track))
-                    # track.pop(key, None)
+                    track.pop(key, None)
                 except KeyError:
                     pass
         
