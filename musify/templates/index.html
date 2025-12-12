@@ -27,16 +27,17 @@
                 class="top-artist-month__container px-5 justify-center items-center flex flex-wrap gap-12">
 
                     {% for album in albums %}
-                        <div class="top-artist-month-card track-card">
 
-                            <a href="{{album['album']['external_urls']['spotify']}}" target="_blank">
-                                <img src="{{album['album']['images'][1]['url']}}" alt="track img"
+                         <div class="top-artist-month-card track-card">
+
+                            <a href="{{album['external_urls']['spotify']}}" target="_blank">
+                                <img src="{{album['images'][1]['url']}}" alt="track img"
                             class="track-card__img">
                             </a>
                             <div class="track-card__content">
                                 <h3
                                 class="track-card__title">
-                                {{album["album"]["artists"][0]["name"]}}
+                                {{album["artists"][0]["name"]}}
                             </h3>
                             <p
                                 class="track-card__desc">
